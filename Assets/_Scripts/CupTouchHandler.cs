@@ -6,12 +6,14 @@ public class CupTouchHandler : MonoBehaviour
     private GameScoreManager _gameScoreManager;
     private CupShuffler _cupShuffler;
     private LevelController _levelController;
+    private GameButtons _gameButtons;
 
     private void Start()
     {
         _gameScoreManager = GetComponent<GameScoreManager>();
         _cupShuffler = GetComponent<CupShuffler>();
         _levelController = GetComponent<LevelController>();
+        _gameButtons = GetComponent<GameButtons>();
     }
 
     void Update()
@@ -111,9 +113,10 @@ public class CupTouchHandler : MonoBehaviour
             if (cupObject.transform.childCount > 1)
             {
                 cupObject.transform.GetChild(1).gameObject.SetActive(true);
-                StartCoroutine(MoveChildToPosition(cupObject.transform.GetChild(1), new Vector2(0.1f, 1f), 1f));
+                StartCoroutine(MoveChildAfterLose(cupObject.transform.GetChild(1), new Vector2(0.1f, 1f), 1f));
             }
         }
+        _gameButtons.LoseGameBehavior();
 
 
     }
@@ -160,5 +163,31 @@ public class CupTouchHandler : MonoBehaviour
 
         _gameScoreManager.UpdateScoreText(int.Parse(child.parent.gameObject.name));
         _levelController.IncreaseCurrentLevel();
+        _gameButtons.WinGameBehavior();
+    }
+
+    private IEnumerator MoveChildAfterLose(Transform child, Vector2 targetPosition, float duration)
+    {
+        yield return new WaitForSeconds(0.5f);
+        child.gameObject.SetActive(true);
+        Vector2 startPosition = child.localPosition;
+        float elapsedTime = 0;
+
+        foreach (var cup in GameObject.FindGameObjectsWithTag("Cup"))
+        {
+            if (cup.transform.childCount > 1)
+            {
+                cup.transform.GetChild(0).gameObject.SetActive(true);
+            }
+        }
+
+        while (elapsedTime < duration)
+        {
+            child.localPosition = Vector2.Lerp(startPosition, targetPosition, elapsedTime / duration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        child.localPosition = targetPosition;
     }
 }
