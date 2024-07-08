@@ -3,11 +3,15 @@ using System.Collections;
 
 public class CupTouchHandler : MonoBehaviour
 {
+    private GameScoreManager _gameScoreManager;
     private CupShuffler _cupShuffler;
+    private LevelController _levelController;
 
     private void Start()
     {
+        _gameScoreManager = GetComponent<GameScoreManager>();
         _cupShuffler = GetComponent<CupShuffler>();
+        _levelController = GetComponent<LevelController>();
     }
 
     void Update()
@@ -128,14 +132,6 @@ public class CupTouchHandler : MonoBehaviour
         }
 
         cup.transform.position = endPosition;
-
-        foreach (var cupObject in GameObject.FindGameObjectsWithTag("Cup"))
-        {
-            if (cupObject.transform.childCount > 0)
-            {
-                //OnCupTouchedWithChildren(cupObject);
-            }
-        }
     }
 
     private IEnumerator MoveChildToPosition(Transform child, Vector2 targetPosition, float duration)
@@ -162,6 +158,7 @@ public class CupTouchHandler : MonoBehaviour
 
         child.localPosition = targetPosition;
 
-        
+        _gameScoreManager.UpdateScoreText(int.Parse(child.parent.gameObject.name));
+        _levelController.IncreaseCurrentLevel();
     }
 }

@@ -5,12 +5,14 @@ public class CupShuffler : MonoBehaviour
 {
     [SerializeField] private Transform[] cups;
     private float swapDuration = 0.5f;
-    private int numberOfSwaps = 10;
+    private int numberOfSwaps;
     private float flipDuration = 1f;
     public bool CanChooseCup;
-
+    private LevelController _levelController;
     private void Start()
     {
+        _levelController = GetComponent<LevelController>();
+        numberOfSwaps = _levelController.CurrentLevel;
         CanChooseCup = false;
     }
 
