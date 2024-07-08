@@ -1,12 +1,18 @@
 using System.Collections;
 using UnityEngine;
 
-public class ShuffleCups : MonoBehaviour
+public class CupShuffler : MonoBehaviour
 {
     [SerializeField] private Transform[] cups;
     private float swapDuration = 0.5f;
     private int numberOfSwaps = 10;
     private float flipDuration = 1.0f;
+    public bool CanChooseCup;
+
+    private void Start()
+    {
+        CanChooseCup = false;
+    }
 
     public void BeginShuffle()
     {
@@ -30,6 +36,7 @@ public class ShuffleCups : MonoBehaviour
 
             yield return StartCoroutine(SwapCups(cups[indexA], cups[indexB]));
         }
+        CanChooseCup = true;
     }
 
     private IEnumerator FlipCups()
@@ -70,5 +77,6 @@ public class ShuffleCups : MonoBehaviour
 
         cupA.position = positionB;
         cupB.position = positionA;
+        
     }
 }
