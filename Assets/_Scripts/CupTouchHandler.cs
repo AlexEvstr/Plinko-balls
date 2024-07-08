@@ -29,7 +29,7 @@ public class CupTouchHandler : MonoBehaviour
                     {
                         StartCoroutine(MoveAndRotateCup(hit.collider.gameObject, new Vector3(0, 0.6f, 0), Quaternion.Euler(0, 0, 210), 0.5f));
 
-                        if (hit.collider.gameObject.transform.childCount > 0)
+                        if (hit.collider.gameObject.transform.childCount > 1)
                         {
                             OnCupTouchedWithChildren(hit.collider.gameObject);
                         }
@@ -46,8 +46,9 @@ public class CupTouchHandler : MonoBehaviour
     void OnCupTouchedWithChildren(GameObject cup)
     {
         Debug.Log("true");
-        Transform child = cup.transform.GetChild(0);
+        Transform child = cup.transform.GetChild(1);
         StartCoroutine(MoveChildToPosition(child, new Vector2(0.1f, 1f), 1f));
+
     }
 
     void OnCupTouchedWithoutChildren(GameObject cup)
@@ -102,7 +103,14 @@ public class CupTouchHandler : MonoBehaviour
         foreach (GameObject cupObject in GameObject.FindGameObjectsWithTag("Cup"))
         {
             StartCoroutine(MoveCupUp(cupObject, 0.6f, 0.5f));
+            cupObject.transform.GetChild(0).gameObject.SetActive(true);
+            if (cupObject.transform.childCount > 1)
+            {
+                cupObject.transform.GetChild(1).gameObject.SetActive(true);
+                StartCoroutine(MoveChildToPosition(cupObject.transform.GetChild(1), new Vector2(0.1f, 1f), 1f));
+            }
         }
+
 
     }
 
@@ -125,7 +133,7 @@ public class CupTouchHandler : MonoBehaviour
         {
             if (cupObject.transform.childCount > 0)
             {
-                OnCupTouchedWithChildren(cupObject);
+                //OnCupTouchedWithChildren(cupObject);
             }
         }
     }
@@ -137,6 +145,14 @@ public class CupTouchHandler : MonoBehaviour
         Vector2 startPosition = child.localPosition;
         float elapsedTime = 0;
 
+        foreach (var cup in GameObject.FindGameObjectsWithTag("Cup"))
+        {
+            if (cup.transform.childCount > 1)
+            {
+                cup.transform.GetChild(0).gameObject.SetActive(true);
+            }
+        }
+
         while (elapsedTime < duration)
         {
             child.localPosition = Vector2.Lerp(startPosition, targetPosition, elapsedTime / duration);
@@ -145,5 +161,7 @@ public class CupTouchHandler : MonoBehaviour
         }
 
         child.localPosition = targetPosition;
+
+        
     }
 }
