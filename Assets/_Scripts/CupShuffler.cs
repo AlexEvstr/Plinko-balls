@@ -6,7 +6,7 @@ public class CupShuffler : MonoBehaviour
     [SerializeField] private Transform[] cups;
     private float swapDuration = 0.5f;
     private int numberOfSwaps = 10;
-    private float flipDuration = 1.0f;
+    private float flipDuration = 1f;
     public bool CanChooseCup;
 
     private void Start()
@@ -21,8 +21,7 @@ public class CupShuffler : MonoBehaviour
 
     private IEnumerator Shuffle()
     {
-        yield return new WaitForSeconds(1.0f);
-
+        yield return new WaitForSeconds(0.5f);
         yield return StartCoroutine(FlipCups());
 
         for (int i = 0; i < numberOfSwaps; i++)
@@ -58,11 +57,13 @@ public class CupShuffler : MonoBehaviour
         foreach (Transform cup in cups)
         {
             cup.rotation = endRotation;
+            
+            
         }
     }
 
     private IEnumerator SwapCups(Transform cupA, Transform cupB)
-    {
+    {        
         Vector3 positionA = cupA.position;
         Vector3 positionB = cupB.position;
 
