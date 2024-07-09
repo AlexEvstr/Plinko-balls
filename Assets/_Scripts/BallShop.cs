@@ -39,7 +39,7 @@ public class BallShop : MonoBehaviour
                 if (PlayerPrefs.GetInt("SelectedSkinBall") == int.Parse(skin.buttonName))
                 {
                     skin.buttonText.text = "Selected";
-                    skin.button.image.color = Color.red;
+                    skin.button.image.color = new Color(0.2f, 1.0f, 0);
                 }
                 else
                 {
@@ -93,7 +93,7 @@ public class BallShop : MonoBehaviour
             if (skin.buttonName == skinName)
             {
                 //_menuEffects.PlayClickSound();
-                skin.button.image.color = Color.red;
+                skin.button.image.color = new Color(0.2f, 1.0f, 0);
                 skin.buttonText.text = "Selected";
                 PlayerPrefs.SetInt("SelectedSkinBall", int.Parse(skinName));
             }

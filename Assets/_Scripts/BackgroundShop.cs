@@ -41,7 +41,7 @@ public class BackgroundShop : MonoBehaviour
                 if (PlayerPrefs.GetInt("SelectedSkinBackground") == int.Parse(skin.buttonName))
                 {
                     skin.buttonText.text = "Selected";
-                    skin.button.image.color = Color.red;
+                    skin.button.image.color = new Color(0.2f, 1.0f, 0);
                 }
                 else
                 {
@@ -96,7 +96,7 @@ public class BackgroundShop : MonoBehaviour
             {
                 //_menuEffects.PlayClickSound();
                 _currentBackground.sprite = _backgroundSprites[int.Parse(skinName)];
-                skin.button.image.color = Color.red;
+                skin.button.image.color = new Color(0.2f, 1.0f, 0);
                 skin.buttonText.text = "Selected";
                 PlayerPrefs.SetInt("SelectedSkinBackground", int.Parse(skinName));
             }
