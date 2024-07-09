@@ -12273,6 +12273,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1320483656}
   m_SourcePrefab: {fileID: 100100000, guid: bd50992819a6e402f89b2af3d68ad9d8, type: 3}
+--- !u!212 &1320483651 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 458825091743831609, guid: bd50992819a6e402f89b2af3d68ad9d8, type: 3}
+  m_PrefabInstance: {fileID: 1320483650}
+  m_PrefabAsset: {fileID: 0}
 --- !u!95 &1320483656
 Animator:
   serializedVersion: 5
@@ -12789,6 +12794,7 @@ GameObject:
   - component: {fileID: 1390403769}
   - component: {fileID: 1390403770}
   - component: {fileID: 1390403771}
+  - component: {fileID: 1390403772}
   m_Layer: 0
   m_Name: Controller
   m_TagString: Untagged
@@ -12897,6 +12903,25 @@ MonoBehaviour:
   _winGame: {fileID: 1535285918}
   _loseGame: {fileID: 595588943}
   _pauseGame: {fileID: 723310949}
+--- !u!114 &1390403772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1390403764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af14b0fd5e2164ce4b1dc398156f0a17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ball: {fileID: 1320483651}
+  _ballSprites:
+  - {fileID: 21300000, guid: 9892bf033eca244e5bbda2047fd0b454, type: 3}
+  - {fileID: 21300000, guid: 8970fd6cff804462ea104ac6bab0f2ff, type: 3}
+  - {fileID: 21300000, guid: d9f86ffc2f74b461b993731819bb8766, type: 3}
+  - {fileID: 21300000, guid: cacd9e0360bf44e40a30a6fe240dcb82, type: 3}
+  - {fileID: 21300000, guid: 7b4c46244d9ee43b1b5e674b9cd5a8c6, type: 3}
 --- !u!1 &1393002415
 GameObject:
   m_ObjectHideFlags: 0
@@ -19445,8 +19470,8 @@ SceneRoots:
   - {fileID: 408643011}
   - {fileID: 1443419595}
   - {fileID: 2015440780}
-  - {fileID: 1390403765}
   - {fileID: 1320483650}
   - {fileID: 938845016}
   - {fileID: 1615621779}
   - {fileID: 1444234310}
+  - {fileID: 1390403765}
