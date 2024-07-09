@@ -2674,7 +2674,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &305621774
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12682,6 +12682,13 @@ MonoBehaviour:
   _menuPanel: {fileID: 890156930}
   _settingsPanel: {fileID: 1275781799}
   _shopPanel: {fileID: 12493684}
+  _ballShop: {fileID: 305621773}
+  _backgroundShop: {fileID: 279204078}
+  _cupShop: {fileID: 2047062168}
+  _ballShopButton: {fileID: 614786280}
+  _backgroundShopButton_1: {fileID: 187810837}
+  _backgroundShopButton_2: {fileID: 1711646339}
+  _cupShopButton: {fileID: 1254626158}
 --- !u!114 &1331774692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18395,7 +18402,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2047062169
 RectTransform:
   m_ObjectHideFlags: 0
