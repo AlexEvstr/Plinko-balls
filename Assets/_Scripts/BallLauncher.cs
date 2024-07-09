@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class BallLauncher : MonoBehaviour
 {
     [SerializeField] private Button _ballLauncherButton;
-    [SerializeField] private Rigidbody2D _ballRigidbody;
+    [SerializeField] private GameObject _ball;
 
     private void Start()
     {
@@ -13,7 +13,8 @@ public class BallLauncher : MonoBehaviour
 
     private void OnButtonClick()
     {
-        _ballRigidbody.bodyType = RigidbodyType2D.Dynamic;
+        _ball.GetComponent<Animator>().enabled = false;
+        _ball.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
         _ballLauncherButton.onClick.RemoveListener(OnButtonClick);
     }
 }

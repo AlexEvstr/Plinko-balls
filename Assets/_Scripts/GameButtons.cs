@@ -9,6 +9,11 @@ public class GameButtons : MonoBehaviour
     [SerializeField] private GameObject _loseGame;
     [SerializeField] private GameObject _pauseGame;
 
+    private void Start()
+    {
+        Time.timeScale = 1;
+    }
+
     public void RestartLevelButton()
     {
         SceneManager.LoadScene("GameScene");
