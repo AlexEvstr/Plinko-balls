@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Specialized;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,15 +7,16 @@ public class BallCollision : MonoBehaviour
 {
     [SerializeField] private CupShuffler _cupShuffler;
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private IEnumerator OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Cup"))
         {
-            transform.SetParent(collision.transform);
+            gameObject.GetComponent<CircleCollider2D>().enabled = false;
             gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
-            _cupShuffler.BeginShuffle();
+            yield return StartCoroutine(IncreaseCupSize(collision.gameObject));
             gameObject.SetActive(false);
-
+            _cupShuffler.BeginShuffle();
+            
             foreach (var cups in GameObject.FindGameObjectsWithTag("Cup"))
             {
                 cups.transform.GetChild(0).gameObject.SetActive(false);
@@ -33,6 +33,17 @@ public class BallCollision : MonoBehaviour
         {
             SceneManager.LoadScene("GameScene");
         }
+    }
+
+    private IEnumerator IncreaseCupSize(GameObject cup)
+    {
+        gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
+        transform.position = new Vector2(cup.transform.position.x, cup.transform.position.y);
+        cup.gameObject.transform.localScale = new Vector2(1.2f, 1.2f);
+        yield return new WaitForSeconds(0.1f);
+        cup.gameObject.transform.localScale = new Vector2(1f, 1f);
+        gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
+        transform.SetParent(cup.transform);
     }
 
     private IEnumerator IncreaseCircleFieldSize(GameObject circle)

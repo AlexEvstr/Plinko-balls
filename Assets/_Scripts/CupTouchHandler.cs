@@ -19,7 +19,7 @@ public class CupTouchHandler : MonoBehaviour
     void Update()
     {
         if (Input.touchCount > 0 && _cupShuffler.CanChooseCup)
-        {
+        {         
             Touch touch = Input.GetTouch(0);
 
             if (touch.phase == TouchPhase.Began)
@@ -53,7 +53,7 @@ public class CupTouchHandler : MonoBehaviour
     {
         Debug.Log("true");
         Transform child = cup.transform.GetChild(1);
-        StartCoroutine(MoveChildToPosition(child, new Vector2(0.1f, 1f), 1f));
+        StartCoroutine(MoveChildToPosition(child, new Vector2(transform.position.x, 1f), 1f));
 
     }
 
