@@ -10,10 +10,12 @@ public class MenuButtons : MonoBehaviour
     [SerializeField] private GameObject _shopButton;
     [SerializeField] private GameObject _backFromShopButton;
     [SerializeField] private GameObject _backFromSettingsButton;
+    [SerializeField] private GameObject _backFromLevelsButton;
 
     [SerializeField] private GameObject _menuPanel;
     [SerializeField] private GameObject _settingsPanel;
     [SerializeField] private GameObject _shopPanel;
+    [SerializeField] private GameObject _levelsPanel;
 
     [SerializeField] private GameObject _ballShop;
     [SerializeField] private GameObject _backgroundShop;
@@ -36,6 +38,7 @@ public class MenuButtons : MonoBehaviour
         _backgroundShopButton_1.GetComponent<Button>().onClick.AddListener(OpenBackgroundShopButton_1);
         _backgroundShopButton_2.GetComponent<Button>().onClick.AddListener(OpenBackgroundShopButton_2);
         _cupShopButton.GetComponent<Button>().onClick.AddListener(OpenCupShopButton);
+        _backFromLevelsButton.GetComponent<Button>().onClick.AddListener(CloseLevelsBtn);
     }
 
     public void StartGameBtn()
@@ -49,7 +52,23 @@ public class MenuButtons : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         _startButton.transform.localScale = new Vector2(1f, 1f);
         yield return new WaitForSeconds(0.25f);
-        SceneManager.LoadScene("GameScene");
+        _menuPanel.SetActive(false);
+        _levelsPanel.SetActive(true);
+    }
+
+    public void CloseLevelsBtn()
+    {
+        StartCoroutine(CloseLevelsBehavior());
+    }
+
+    private IEnumerator CloseLevelsBehavior()
+    {
+        _backFromLevelsButton.transform.localScale = new Vector2(1.1f, 1.1f);
+        yield return new WaitForSeconds(0.1f);
+        _backFromLevelsButton.transform.localScale = new Vector2(1f, 1f);
+        yield return new WaitForSeconds(0.25f);
+        _levelsPanel.SetActive(false);
+        _menuPanel.SetActive(true);
     }
 
     public void SettingsButton()
