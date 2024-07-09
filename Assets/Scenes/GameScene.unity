@@ -14991,6 +14991,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1615621779}
+  - component: {fileID: 1615621780}
   m_Layer: 0
   m_Name: Fields
   m_TagString: Untagged
@@ -15021,6 +15022,38 @@ Transform:
   - {fileID: 1608522346}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1615621780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1615621778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f532cf4109beb4d6daca6d8b052a23c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colors:
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 0.9660845, g: 1, b: 0, a: 1}
+  - {r: 1, g: 0.5473725, b: 0, a: 1}
+  - {r: 1, g: 0.205793, b: 0, a: 1}
+  - {r: 1, g: 0, b: 0.23074055, a: 1}
+  - {r: 1, g: 0, b: 0.40282726, a: 1}
+  - {r: 1, g: 0, b: 0.59176636, a: 1}
+  - {r: 1, g: 0, b: 0.9324703, a: 1}
+  - {r: 0, g: 0, b: 0, a: 1}
+  - {r: 0.49056602, g: 0.49056602, b: 0.49056602, a: 1}
+  - {r: 0.43544197, g: 0, b: 1, a: 1}
+  - {r: 0.21603727, g: 0, b: 1, a: 1}
+  - {r: 0, g: 0.122285366, b: 1, a: 1}
+  - {r: 0, g: 0.48977518, b: 1, a: 1}
+  - {r: 0, g: 0.85760117, b: 1, a: 1}
+  - {r: 0, g: 1, b: 0.5914831, a: 1}
+  - {r: 0, g: 1, b: 0.1881628, a: 1}
+  - {r: 0.69922805, g: 1, b: 0, a: 1}
+  levelController: {fileID: 1390403770}
 --- !u!1 &1628259425
 GameObject:
   m_ObjectHideFlags: 0

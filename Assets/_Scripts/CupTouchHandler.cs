@@ -51,7 +51,6 @@ public class CupTouchHandler : MonoBehaviour
 
     void OnCupTouchedWithChildren(GameObject cup)
     {
-        Debug.Log("true");
         Transform child = cup.transform.GetChild(1);
         StartCoroutine(MoveChildToPosition(child, new Vector2(transform.position.x, 1f), 1f));
 
@@ -59,7 +58,6 @@ public class CupTouchHandler : MonoBehaviour
 
     void OnCupTouchedWithoutChildren(GameObject cup)
     {
-        Debug.Log("false");
         StartCoroutine(HandleCupWithoutChildren(cup, 1.0f));
     }
 
