@@ -7,6 +7,7 @@ public class CupTouchHandler : MonoBehaviour
     private CupShuffler _cupShuffler;
     private LevelController _levelController;
     private GameButtons _gameButtons;
+    private GameFeedbackManager _gameFeedbackManager;
 
     private void Start()
     {
@@ -14,6 +15,7 @@ public class CupTouchHandler : MonoBehaviour
         _cupShuffler = GetComponent<CupShuffler>();
         _levelController = GetComponent<LevelController>();
         _gameButtons = GetComponent<GameButtons>();
+        _gameFeedbackManager = GetComponent<GameFeedbackManager>();
     }
 
     void Update()
@@ -33,6 +35,7 @@ public class CupTouchHandler : MonoBehaviour
                 {
                     if (hit.collider.gameObject.CompareTag("Cup"))
                     {
+                        _gameFeedbackManager.PlaychooseCupSound();
                         StartCoroutine(MoveAndRotateCup(hit.collider.gameObject, new Vector3(0, 0.6f, 0), Quaternion.Euler(0, 0, 210), 0.5f));
 
                         if (hit.collider.gameObject.transform.childCount > 1)

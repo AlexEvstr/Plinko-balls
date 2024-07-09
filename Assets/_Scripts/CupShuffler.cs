@@ -9,8 +9,11 @@ public class CupShuffler : MonoBehaviour
     private float flipDuration = 1f;
     public bool CanChooseCup;
     private LevelController _levelController;
+    private GameFeedbackManager _gameFeedbackManager;
+
     private void Start()
     {
+        _gameFeedbackManager = GetComponent<GameFeedbackManager>();
         _levelController = GetComponent<LevelController>();
         numberOfSwaps = _levelController.CurrentLevel;
         CanChooseCup = false;
@@ -28,6 +31,7 @@ public class CupShuffler : MonoBehaviour
 
         for (int i = 0; i < numberOfSwaps; i++)
         {
+            _gameFeedbackManager.PlaySwipeSound();
             int indexA = Random.Range(0, cups.Length);
             int indexB;
             do

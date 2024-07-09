@@ -12152,6 +12152,10 @@ PrefabInstance:
       propertyPath: _cupShuffler
       value: 
       objectReference: {fileID: 1390403766}
+    - target: {fileID: 4494431680640358420, guid: bd50992819a6e402f89b2af3d68ad9d8, type: 3}
+      propertyPath: _gameFeedbackManager
+      value: 
+      objectReference: {fileID: 1390403774}
     - target: {fileID: 6219432390392972929, guid: bd50992819a6e402f89b2af3d68ad9d8, type: 3}
       propertyPath: m_Name
       value: Ball
@@ -12727,6 +12731,8 @@ GameObject:
   - component: {fileID: 1390403771}
   - component: {fileID: 1390403772}
   - component: {fileID: 1390403773}
+  - component: {fileID: 1390403775}
+  - component: {fileID: 1390403774}
   m_Layer: 0
   m_Name: Controller
   m_TagString: Untagged
@@ -12892,6 +12898,122 @@ MonoBehaviour:
   - {fileID: 967979085}
   - {fileID: 1984687260}
   - {fileID: 1608522345}
+--- !u!114 &1390403774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1390403764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9f17e13690d14d0594cca89e194f8a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clickAudioClip: {fileID: 8300000, guid: 7a92ec47c423744fc964356048581a3f, type: 3}
+  winAudioClip: {fileID: 8300000, guid: 46f4a446062b94a5286c9e8dda2fd971, type: 3}
+  loseAudioClip: {fileID: 8300000, guid: 26ebd6fa85560416f81ee688d4bc7a9d, type: 3}
+  circleCollisionAudioClip: {fileID: 8300000, guid: fd70edff9b3a04414970273c3f6628f1, type: 3}
+  cupCollisionAudioClip: {fileID: 8300000, guid: 06d76516f892f4af886df98ce541ff4a, type: 3}
+  swipeAudioClip: {fileID: 8300000, guid: 30db1835be1354c098c53e6aa316e5f8, type: 3}
+  chooseCupAudioClip: {fileID: 8300000, guid: a89adc812ab304fe3ab8bfc2e83f72de, type: 3}
+  bottomCollisionAudioClip: {fileID: 8300000, guid: 62cac25e41ead4752ae46bf9a4e0bc07, type: 3}
+--- !u!82 &1390403775
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1390403764}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1393002415
 GameObject:
   m_ObjectHideFlags: 0

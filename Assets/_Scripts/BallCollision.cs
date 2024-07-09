@@ -6,11 +6,13 @@ using UnityEngine.SceneManagement;
 public class BallCollision : MonoBehaviour
 {
     [SerializeField] private CupShuffler _cupShuffler;
+    [SerializeField] private GameFeedbackManager _gameFeedbackManager;
 
     private IEnumerator OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Cup"))
         {
+            _gameFeedbackManager.PlayCupCollisionSound();
             gameObject.GetComponent<CircleCollider2D>().enabled = false;
             gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
             yield return StartCoroutine(IncreaseCupSize(collision.gameObject));
@@ -26,12 +28,14 @@ public class BallCollision : MonoBehaviour
 
         else if (collision.gameObject.CompareTag("CircleField"))
         {
+            _gameFeedbackManager.PlayShotFeedback();
             StartCoroutine(IncreaseCircleFieldSize(collision.gameObject));
 
         }
         else if (collision.gameObject.CompareTag("BottomBorder"))
         {
-            SceneManager.LoadScene("GameScene");
+            _gameFeedbackManager.PlaybottomCollisionSound();
+            //SceneManager.LoadScene("GameScene");
         }
     }
 

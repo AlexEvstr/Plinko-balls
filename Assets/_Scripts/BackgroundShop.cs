@@ -20,11 +20,11 @@ public class BackgroundShop : MonoBehaviour
     [SerializeField] private TMP_Text _gameScoreText;
     [SerializeField] private Image _currentBackground;
     [SerializeField] private Sprite[] _backgroundSprites;
-    //private MenuEffects _menuEffects;
+    private AudioVibrationManager _audioVibrationManager;
 
     private void Start()
     {
-        //_menuEffects = GetComponent<MenuEffects>();
+        _audioVibrationManager = GetComponent<AudioVibrationManager>();
         playerMoney = PlayerPrefs.GetInt("GameScore", 0);
         _gameScoreText.text = playerMoney.ToString();
         if (!PlayerPrefs.HasKey("SelectedSkinBackground"))
@@ -61,7 +61,7 @@ public class BackgroundShop : MonoBehaviour
         playerMoney = PlayerPrefs.GetInt("GameScore", 0);
         if (playerMoney >= skin.skinPrice)
         {
-            //_menuEffects.PlayPurchaseSound();
+            _audioVibrationManager.PlayPurchaseFeedback();
             playerMoney -= skin.skinPrice;
             PlayerPrefs.SetInt("GameScore", playerMoney);
             _gameScoreText.text = playerMoney.ToString();
@@ -75,7 +75,7 @@ public class BackgroundShop : MonoBehaviour
         }
         else
         {
-            //_menuEffects.PlayClickSound();
+            _audioVibrationManager.PlayClickFeedback();
             StartCoroutine(ShowNoteEnoughText(skin));
         }
     }
@@ -94,7 +94,7 @@ public class BackgroundShop : MonoBehaviour
         {
             if (skin.buttonName == skinName)
             {
-                //_menuEffects.PlayClickSound();
+                _audioVibrationManager.PlayClickFeedback();
                 _currentBackground.sprite = _backgroundSprites[int.Parse(skinName)];
                 skin.button.image.color = new Color(0.2f, 1.0f, 0);
                 skin.buttonText.text = "Selected";

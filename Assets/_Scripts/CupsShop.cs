@@ -18,11 +18,11 @@ public class CupsShop : MonoBehaviour
     public Skin[] skins;
     private int playerMoney;
     [SerializeField] private TMP_Text _gameScoreText;
-    //private MenuEffects _menuEffects;
+    private AudioVibrationManager _audioVibrationManager;
 
     private void Start()
     {
-        //_menuEffects = GetComponent<MenuEffects>();
+        _audioVibrationManager = GetComponent<AudioVibrationManager>();
         playerMoney = PlayerPrefs.GetInt("GameScore", 0);
         _gameScoreText.text = playerMoney.ToString();
         if (!PlayerPrefs.HasKey("SelectedSkinCup"))
@@ -59,7 +59,7 @@ public class CupsShop : MonoBehaviour
         playerMoney = PlayerPrefs.GetInt("GameScore", 0);
         if (playerMoney >= skin.skinPrice)
         {
-            //_menuEffects.PlayPurchaseSound();
+            _audioVibrationManager.PlayPurchaseFeedback();
             playerMoney -= skin.skinPrice;
             PlayerPrefs.SetInt("GameScore", playerMoney);
             _gameScoreText.text = playerMoney.ToString();
@@ -73,7 +73,7 @@ public class CupsShop : MonoBehaviour
         }
         else
         {
-            //_menuEffects.PlayClickSound();
+            _audioVibrationManager.PlayClickFeedback();
             StartCoroutine(ShowNoteEnoughText(skin));
         }
     }
@@ -92,7 +92,7 @@ public class CupsShop : MonoBehaviour
         {
             if (skin.buttonName == skinName)
             {
-                //_menuEffects.PlayClickSound();
+                _audioVibrationManager.PlayClickFeedback();
                 skin.button.image.color = new Color(0.2f, 1.0f, 0);
                 skin.buttonText.text = "Selected";
                 PlayerPrefs.SetInt("SelectedSkinCup", int.Parse(skinName));

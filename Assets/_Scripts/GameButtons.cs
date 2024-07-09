@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,9 +6,11 @@ public class GameButtons : MonoBehaviour
     [SerializeField] private GameObject _winGame;
     [SerializeField] private GameObject _loseGame;
     [SerializeField] private GameObject _pauseGame;
+    private GameFeedbackManager _gameFeedbackManager;
 
     private void Start()
     {
+        _gameFeedbackManager = GetComponent<GameFeedbackManager>();
         Time.timeScale = 1;
     }
 
@@ -27,11 +27,13 @@ public class GameButtons : MonoBehaviour
     public void WinGameBehavior()
     {
         _winGame.SetActive(true);
+        _gameFeedbackManager.PlayWinFeedback();
     }
 
     public void LoseGameBehavior()
     {
         _loseGame.SetActive(true);
+        _gameFeedbackManager.PlayLoseFeedback();
     }
 
     public void OpenPause()
