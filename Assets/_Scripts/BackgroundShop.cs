@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class BallShop : MonoBehaviour
+public class BackgroundShop : MonoBehaviour
 {
     [System.Serializable]
     public class Skin
@@ -18,6 +18,8 @@ public class BallShop : MonoBehaviour
     public Skin[] skins;
     private int playerMoney;
     [SerializeField] private TMP_Text _gameScoreText;
+    [SerializeField] private Image _currentBackground;
+    [SerializeField] private Sprite[] _backgroundSprites;
     //private MenuEffects _menuEffects;
 
     private void Start()
@@ -25,18 +27,18 @@ public class BallShop : MonoBehaviour
         //_menuEffects = GetComponent<MenuEffects>();
         playerMoney = PlayerPrefs.GetInt("GameScore", 0);
         _gameScoreText.text = playerMoney.ToString();
-        if (!PlayerPrefs.HasKey("SelectedSkinBall"))
+        if (!PlayerPrefs.HasKey("SelectedSkinBackground"))
         {
-            PlayerPrefs.SetInt("SelectedSkinBall", 0);
-            PlayerPrefs.SetInt("0ball", 1);
+            PlayerPrefs.SetInt("SelectedSkinBackground", 0);
+            PlayerPrefs.SetInt("0background", 1);
         }
 
         foreach (var skin in skins)
         {
-            if (PlayerPrefs.GetInt(skin.buttonName + "ball", 0) == 1)
+            if (PlayerPrefs.GetInt(skin.buttonName + "background", 0) == 1)
             {
                 skin.button.onClick.AddListener(() => SelectSkin(skin.buttonName));
-                if (PlayerPrefs.GetInt("SelectedSkinBall") == int.Parse(skin.buttonName))
+                if (PlayerPrefs.GetInt("SelectedSkinBackground") == int.Parse(skin.buttonName))
                 {
                     skin.buttonText.text = "Selected";
                     skin.button.image.color = Color.red;
@@ -63,13 +65,13 @@ public class BallShop : MonoBehaviour
             playerMoney -= skin.skinPrice;
             PlayerPrefs.SetInt("GameScore", playerMoney);
             _gameScoreText.text = playerMoney.ToString();
-            PlayerPrefs.SetInt(skin.buttonName + "ball", 1);
+            PlayerPrefs.SetInt(skin.buttonName + "background", 1);
             skin.buttonText.text = "Select";
             skin.button.onClick.RemoveAllListeners();
             skin.button.onClick.AddListener(() => SelectSkin(skin.buttonName));
             skin.notEnoughText.text = "";
             SelectSkin(skin.buttonName);
-            PlayerPrefs.SetInt("SelectedSkinRoad", int.Parse(skin.buttonName));
+            PlayerPrefs.SetInt("SelectedSkinBackground", int.Parse(skin.buttonName));
         }
         else
         {
@@ -93,11 +95,12 @@ public class BallShop : MonoBehaviour
             if (skin.buttonName == skinName)
             {
                 //_menuEffects.PlayClickSound();
+                _currentBackground.sprite = _backgroundSprites[int.Parse(skinName)];
                 skin.button.image.color = Color.red;
                 skin.buttonText.text = "Selected";
-                PlayerPrefs.SetInt("SelectedSkinBall", int.Parse(skinName));
+                PlayerPrefs.SetInt("SelectedSkinBackground", int.Parse(skinName));
             }
-            else if (PlayerPrefs.GetInt(skin.buttonName + "ball", 0) == 1)
+            else if (PlayerPrefs.GetInt(skin.buttonName + "background", 0) == 1)
             {
                 skin.button.image.color = Color.white;
                 skin.buttonText.text = "Select";

@@ -12922,6 +12922,23 @@ MonoBehaviour:
   - {fileID: 21300000, guid: d9f86ffc2f74b461b993731819bb8766, type: 3}
   - {fileID: 21300000, guid: cacd9e0360bf44e40a30a6fe240dcb82, type: 3}
   - {fileID: 21300000, guid: 7b4c46244d9ee43b1b5e674b9cd5a8c6, type: 3}
+  _backgroundImage: {fileID: 817472504}
+  _backgrounds:
+  - {fileID: 21300000, guid: 4af508e57dc6846fb8f9fb883035ea93, type: 3}
+  - {fileID: 21300000, guid: 92fd9a73398be4579ae50b68bb8815fd, type: 3}
+  - {fileID: 21300000, guid: f7e7e58d41a604322a60ae15ac5dc48a, type: 3}
+  - {fileID: 21300000, guid: 04f4ef7f7bcdc43389e249b7f732a744, type: 3}
+  - {fileID: 21300000, guid: 159f3c9f2f7814fa89352995e5a118b2, type: 3}
+  _cups:
+  - {fileID: 688138096}
+  - {fileID: 730154384}
+  - {fileID: 1725299454}
+  _cupsSprites:
+  - {fileID: 21300000, guid: e8efd585c3e9640428a802e8b0dd5472, type: 3}
+  - {fileID: 21300000, guid: ca111599604164108b879e89fe7a390c, type: 3}
+  - {fileID: 21300000, guid: 2ebd765b928ad4acab320c4751602de2, type: 3}
+  - {fileID: 21300000, guid: 04fc4b92a717b4970921b4b8a256a3a2, type: 3}
+  - {fileID: 21300000, guid: 33a27978b5b6c404f9a2a17e697c6bf0, type: 3}
 --- !u!1 &1393002415
 GameObject:
   m_ObjectHideFlags: 0
