@@ -8,6 +8,7 @@ public class CupTouchHandler : MonoBehaviour
     private LevelController _levelController;
     private GameButtons _gameButtons;
     private GameFeedbackManager _gameFeedbackManager;
+    [SerializeField] private GameObject _canChooseCup;
 
     private void Start()
     {
@@ -35,6 +36,7 @@ public class CupTouchHandler : MonoBehaviour
                 {
                     if (hit.collider.gameObject.CompareTag("Cup"))
                     {
+                        _canChooseCup.SetActive(false);
                         _gameFeedbackManager.PlaychooseCupSound();
                         StartCoroutine(MoveAndRotateCup(hit.collider.gameObject, new Vector3(0, 0.6f, 0), Quaternion.Euler(0, 0, 210), 0.5f));
 

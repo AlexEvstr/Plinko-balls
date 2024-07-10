@@ -10,6 +10,7 @@ public class CupShuffler : MonoBehaviour
     public bool CanChooseCup;
     private LevelController _levelController;
     private GameFeedbackManager _gameFeedbackManager;
+    [SerializeField] private GameObject _canChooseCup;
 
     private void Start()
     {
@@ -42,6 +43,7 @@ public class CupShuffler : MonoBehaviour
             yield return StartCoroutine(SwapCups(cups[indexA], cups[indexB]));
         }
         CanChooseCup = true;
+        _canChooseCup.SetActive(true);
     }
 
     private IEnumerator FlipCups()

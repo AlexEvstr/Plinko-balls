@@ -35,7 +35,6 @@ public class BallCollision : MonoBehaviour
         else if (collision.gameObject.CompareTag("BottomBorder"))
         {
             _gameFeedbackManager.PlaybottomCollisionSound();
-            //SceneManager.LoadScene("GameScene");
         }
     }
 
